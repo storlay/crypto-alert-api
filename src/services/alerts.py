@@ -59,9 +59,9 @@ def _format_message(alert: Alert, price: Decimal) -> str:
     op = ">" if alert.direction == Direction.above else "<"
     created = alert.created_at.astimezone(UTC).strftime("%Y-%m-%d %H:%M UTC")
     return (
-        f"{alert.coin.value} достиг {price} USDT\n"
-        f"Условие: {alert.coin.value} {op} {alert.threshold}\n"
-        f"Создан: {created}"
+        f"{alert.coin.value} reached {price} USDT\n"
+        f"Condition: {alert.coin.value} {op} {alert.threshold}\n"
+        f"Created: {created}"
     )
 
 

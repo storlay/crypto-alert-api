@@ -30,15 +30,15 @@ async def _on_start(message: Message, redis: Redis, ttl: int) -> None:
     code = _new_code()
     await redis.set(link_key(code), str(chat_id), ex=ttl)
     await message.answer(
-        "Привет! Чтобы привязать аккаунт, отправьте этот код в PATCH /me:\n\n"
+        "Hi! To link your account, send this code to PATCH /me:\n\n"
         f"<code>{code}</code>\n\n"
-        f"Код действителен {ttl // 60} минут.",
+        f"The code is valid for {ttl // 60} minutes.",
         parse_mode="HTML",
     )
 
 
 async def _on_help(message: Message) -> None:
-    await message.answer("Доступно: /start — получить код привязки.")
+    await message.answer("Available: /start - get a linking code.")
 
 
 def build_dispatcher() -> Dispatcher:
